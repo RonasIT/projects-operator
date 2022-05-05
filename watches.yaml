@@ -1,0 +1,10 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: projects.ronas.cloud
+  version: v1alpha1
+  kind: Angular
+  chart: helm-charts/angular
+- group: projects.ronas.cloud
+  version: v1alpha1
+  kind: Laravel
+  chart: helm-charts/laravel
+#+kubebuilder:scaffold:watch
