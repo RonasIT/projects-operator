@@ -1,5 +1,5 @@
 ```bash
-operator-sdk create api --group projects --version v1alpha1 --kind Laravel
+operator-sdk create api --group projects --version v1alpha1 --kind NextJS
 ```
 
 ```bash
