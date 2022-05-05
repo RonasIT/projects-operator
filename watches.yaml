@@ -7,4 +7,8 @@
   version: v1alpha1
   kind: Laravel
   chart: helm-charts/laravel
+- group: projects.ronas.cloud
+  version: v1alpha1
+  kind: NextJS
+  chart: helm-charts/nextjs
 #+kubebuilder:scaffold:watch

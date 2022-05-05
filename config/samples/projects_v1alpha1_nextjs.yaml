@@ -1,0 +1,10 @@
+apiVersion: projects.ronas.cloud/v1alpha1
+kind: NextJS
+metadata:
+  name: techradar-nextjs
+spec:
+  image:
+    repository: gcr.io/ronas-cloud/techradar-nextjs
+    tag: "latest"
+  ingress:
+    host: radar.ronas.cloud

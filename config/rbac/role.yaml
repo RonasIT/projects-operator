@@ -90,4 +90,35 @@ rules:
   resources:
   - "deployments"
 
+##
+## Rules for projects.ronas.cloud/v1alpha1, Kind: NextJS
+##
+- apiGroups:
+  - projects.ronas.cloud
+  resources:
+  - nextjs
+  - nextjs/status
+  - nextjs/finalizers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- verbs:
+  - "*"
+  apiGroups:
+  - ""
+  resources:
+  - "serviceaccounts"
+  - "services"
+- verbs:
+  - "*"
+  apiGroups:
+  - "apps"
+  resources:
+  - "deployments"
+
 #+kubebuilder:scaffold:rules
