@@ -58,5 +58,10 @@ rules:
   - "apps"
   resources:
   - "deployments"
-
+- verbs:
+  - "*"
+  apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
 #+kubebuilder:scaffold:rules
