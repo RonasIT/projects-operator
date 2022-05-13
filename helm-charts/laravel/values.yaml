@@ -74,3 +74,25 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+cronjobs:
+  cmd: "trap 'touch /tmp/pod/main-terminated' EXIT && php artisan schedule:run || true"
+  startingDeadlineSeconds: 200
+  successfulJobsHistoryLimit: 1
+  resources: {}
+
+jobs:
+  migration: 
+    activeDeadlineSeconds: 180
+    cmd: "php artisan migrate --force"
+    resources: {}
+      # We usually recommend not to specify default resources and to leave this as a conscious
+      # choice for the user. This also increases chances charts run on environments with little
+      # resources, such as Minikube. If you do want to specify resources, uncomment the following
+      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      # limits:
+      #   cpu: 100m
+      #   memory: 128Mi
+      # requests:
+      #   cpu: 100m
+      #   memory: 128Mi

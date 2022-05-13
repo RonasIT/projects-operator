@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "laravel.fullname" . }}-migration
+  labels:
+    {{- include "laravel.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install, pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  activeDeadlineSeconds: {{ .Values.jobs.migration.activeDeadlineSeconds }}
+  template:
+    spec:
+     {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "laravel.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ include "laravel.fullname" . }}-db-migrate
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.jobs.migration.resources | nindent 12 }}
+          command:
+            - sh
+            - -c
+            - {{ .Values.jobs.migration.cmd }}
+      restartPolicy: Never
