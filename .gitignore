@@ -12,3 +12,8 @@ bin
 *.swp
 *.swo
 *~
+
+# helm charts
+**/charts/*.tgz
+
+.DS_Store

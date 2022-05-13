@@ -1,7 +1,7 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "laravel.fullname" . }}-migration
+  name: {{ include "laravel.fullname" . }}-cronjob
   labels:
     {{- include "laravel.labels" . | nindent 4 }}
 spec:
@@ -15,7 +15,7 @@ spec:
       template:
         metadata:
           labels:
-            {{- include "laravel.cronLabels" . | nindent 12 }}
+            {{- include "laravel.labels" . | nindent 12 }}
         spec:
           {{- with .Values.imagePullSecrets }}
           imagePullSecrets:
@@ -23,7 +23,7 @@ spec:
           {{- end }}
           serviceAccountName: {{ include "laravel.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.podSecurityContext | nindent 8 }}
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
           containers:
             - name: {{ include "laravel.fullname" . }}-cronjobs
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
