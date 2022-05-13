@@ -3,4 +3,5 @@
 # It should be run by config/default
 resources:
 - bases/projects.ronas.cloud_nextjs.yaml
+- bases/projects.ronas.cloud_laravels.yaml
 #+kubebuilder:scaffold:crdkustomizeresource

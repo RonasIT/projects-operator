@@ -64,4 +64,41 @@ rules:
   - networking.k8s.io
   resources:
   - ingresses
+##
+## Rules for projects.ronas.cloud/v1alpha1, Kind: Laravel
+##
+- apiGroups:
+  - projects.ronas.cloud
+  resources:
+  - laravels
+  - laravels/status
+  - laravels/finalizers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- verbs:
+  - "*"
+  apiGroups:
+  - ""
+  resources:
+  - "serviceaccounts"
+  - "services"
+- verbs:
+  - "*"
+  apiGroups:
+  - "apps"
+  resources:
+  - "deployments"
+- verbs:
+  - "*"
+  apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+
 #+kubebuilder:scaffold:rules

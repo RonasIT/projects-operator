@@ -1,0 +1,1 @@
+{"buildTargets":[".PHONY","all","bundle","bundle-build","bundle-push","catalog-build","catalog-push","deploy","docker-build","docker-push","helm-operator","help","install","kustomize","opm","run","undeploy","uninstall"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
