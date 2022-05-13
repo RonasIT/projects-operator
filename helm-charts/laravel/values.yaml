@@ -76,7 +76,7 @@ tolerations: []
 affinity: {}
 
 cronjobs:
-  cmd: "trap 'touch /tmp/pod/main-terminated' EXIT && php artisan schedule:run || true"
+  cmd: "php artisan schedule:run || true"
   startingDeadlineSeconds: 200
   successfulJobsHistoryLimit: 1
   resources: {}
