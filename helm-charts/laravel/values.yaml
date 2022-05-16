@@ -75,11 +75,28 @@ tolerations: []
 
 affinity: {}
 
+postgresql:
+  auth:
+    enablePostgresUser: false
+    database: "pgdb"
+    username: "pguser"
+    existingSecret: "postgresql-credentials"
+
 cronjobs:
-  cmd: "php artisan schedule:run || true"
-  startingDeadlineSeconds: 200
-  successfulJobsHistoryLimit: 1
-  resources: {}
+  enabled: false
+  schedulers: []
+  defaultSchedule: "*/1 * * * *"
+  defaultConcurrencyPolicy: "Forbid"
+  defaultStartingDeadlineSeconds: 200
+  defaultSuccessfulJobsHistoryLimit: 1
+  defaultRestartPolicy: "Never"
+  defaultResources:
+    limits:
+      cpu: 500m
+      memory: 350Mi
+    requests:
+      cpu: 10m
+      memory: 100Mi
 
 jobs:
   migration: 

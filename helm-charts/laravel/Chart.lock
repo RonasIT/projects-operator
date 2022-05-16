@@ -1,9 +1,9 @@
 dependencies:
-- name: postgres
-  repository: https://ronasit-charts.storage.googleapis.com
-  version: "0.4"
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 11.2.1
 - name: redis
   repository: https://ronasit-charts.storage.googleapis.com
   version: "0.7"
-digest: sha256:e7b5d38f1622dcb0e11d5f2d866005b7d140538ae2b807521c0814862cc3908e
-generated: "2022-05-13T12:27:53.706014+06:00"
+digest: sha256:873ac6a7cd22f2fcdd641b22950c3f7bbd4b30cd7b44867e3126dd5ab412ae89
+generated: "2022-05-16T15:28:31.875905+06:00"

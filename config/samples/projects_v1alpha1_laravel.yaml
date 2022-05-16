@@ -4,7 +4,12 @@ metadata:
   name: laravel-empry-project
 spec:
   image:
-    repository: gcr.io/ronas-cloud/laravel-empty-project
+    repository: laravel-empty-project
     tag: latest
   ingress:
-    host: demo.next.ronasit.com
+    host: laravel-empty-project.ronas.cloud
+  cronjobs:
+    enabled: true
+    schedulers:
+      - name: clear-set-password-hash
+        cmd: "php /app/artisan clear:set-password-hash"

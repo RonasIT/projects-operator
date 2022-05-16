@@ -1,37 +1,43 @@
+{{- if .Values.cronjobs.enabled -}}
+{{- $root := . -}}
+{{- range .Values.cronjobs.schedulers }}
+---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "laravel.fullname" . }}-cronjob
+  name: {{ regexReplaceAll "_" .name "-" }}-cronjob
   labels:
-    {{- include "laravel.labels" . | nindent 4 }}
+    {{- include "laravel.labels" $root | nindent 4 }}
 spec:
-  schedule: "*/1 * * * *"
-  concurrencyPolicy: "Forbid"
-  startingDeadlineSeconds: {{ .Values.cronjobs.startingDeadlineSeconds }}
-  successfulJobsHistoryLimit: {{ .Values.cronjobs.successfulJobsHistoryLimit }}
+  schedule: "{{ .schedule | default $root.Values.cronjobs.defaultSchedule }}"
+  concurrencyPolicy: "{{ .concurrencyPolicy | default $root.Values.cronjobs.defaultConcurrencyPolicy }}"
+  startingDeadlineSeconds: {{ .startingDeadlineSeconds | default $root.Values.cronjobs.defaultStartingDeadlineSeconds }}
+  successfulJobsHistoryLimit: {{ .successfulJobsHistoryLimit | default $root.Values.cronjobs.defaultsuccessfulJobsHistoryLimit }}
   jobTemplate:
     spec:
       backoffLimit: 2
       template:
         metadata:
           labels:
-            {{- include "laravel.labels" . | nindent 12 }}
+            {{- include "laravel.labels" $root | nindent 12 }}
         spec:
-          {{- with .Values.imagePullSecrets }}
+          {{- with $root.Values.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 8 }}
           {{- end }}
-          serviceAccountName: {{ include "laravel.serviceAccountName" . }}
+          serviceAccountName: {{ include "laravel.serviceAccountName" $root }}
           securityContext:
-            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+            {{- toYaml $root.Values.podSecurityContext | nindent 12 }}
           containers:
-            - name: {{ include "laravel.fullname" . }}-cronjobs
-              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-              imagePullPolicy: {{ .Values.image.pullPolicy }}
+            - name: {{ regexReplaceAll "_" .name "-" }}-cronjob
+              image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
+              imagePullPolicy: {{ $root.Values.image.pullPolicy }}
               resources:
-                {{- toYaml .Values.cronjobs.resources | nindent 16 }}
+                {{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
               command:
                 - sh
                 - -c
-                - {{ .Values.cronjobs.cmd }}
-          restartPolicy: "Never"
+                - {{ .cmd }}
+          restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.defaultRestartPolicy }}"
+{{- end }}
+{{- end }}
