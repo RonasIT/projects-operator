@@ -8,7 +8,7 @@ metadata:
     "helm.sh/hook": post-install, pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
 spec:
-  activeDeadlineSeconds: {{ .Values.jobs.migration.activeDeadlineSeconds }}
+  activeDeadlineSeconds: {{ .Values.migration.activeDeadlineSeconds }}
   template:
     spec:
      {{- with .Values.imagePullSecrets }}
@@ -23,9 +23,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
-            {{- toYaml .Values.jobs.migration.resources | nindent 12 }}
+            {{- toYaml .Values.migration.resources | nindent 12 }}
           command:
             - sh
             - -c
-            - {{ .Values.jobs.migration.cmd }}
+            - {{ .Values.migration.cmd }}
       restartPolicy: Never

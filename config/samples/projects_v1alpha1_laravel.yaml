@@ -1,7 +1,7 @@
 apiVersion: projects.ronas.cloud/v1alpha1
 kind: Laravel
 metadata:
-  name: laravel-empry-project
+  name: laravel-empty-project
 spec:
   image:
     repository: laravel-empty-project
@@ -13,3 +13,10 @@ spec:
     schedulers:
       - name: clear-set-password-hash
         cmd: "php /app/artisan clear:set-password-hash"
+  workers:
+  - name: default
+    replicaCount: 1
+    cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
+  - name: the-second
+    replicaCount: 2
+    cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"

@@ -9,5 +9,5 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     version: "11.2.1"
   - name: redis
-    repository: https://ronasit-charts.storage.googleapis.com
-    version: "0.7"
+    repository: https://charts.bitnami.com/bitnami
+    version: "16.9.5"
