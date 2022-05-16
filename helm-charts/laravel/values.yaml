@@ -81,6 +81,9 @@ postgresql:
     database: "pgdb"
     username: "pguser"
     existingSecret: "postgresql-credentials"
+  primary:
+    persistence:
+      size: 1Gi
 
 cronjobs:
   enabled: false
