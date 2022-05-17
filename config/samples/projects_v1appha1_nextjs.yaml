@@ -1,0 +1,11 @@
+apiVersion: projects.ronas.cloud/v1alpha1
+kind: NextJS
+metadata:
+  name: demo-nextjs
+spec:
+  image:
+    repository: nginx
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  ingress:
+    enabled: false

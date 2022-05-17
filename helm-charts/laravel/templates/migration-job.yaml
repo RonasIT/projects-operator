@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "laravel.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": post-install, pre-upgrade
-    "helm.sh/hook-delete-policy": before-hook-creation
+    "helm.sh/hook": post-install,pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   activeDeadlineSeconds: {{ .Values.migration.activeDeadlineSeconds }}
   template:

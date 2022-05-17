@@ -86,6 +86,9 @@ postgresql:
       size: 1Gi
 
 redis:
+  auth:
+    existingSecret: "redis-credentials"
+    existingSecretPasswordKey: "password"
   architecture: "standalone"
   master:
     persistence:
