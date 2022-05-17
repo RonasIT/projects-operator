@@ -13,13 +13,13 @@ You’ll need a Kubernetes cluster to run against. You can use [KIND](https://si
 1. Build and push your image to the location specified by `IMG`:
 	
 ```sh
-make docker-build docker-push IMG=gcr.io/ronas-cloud/projects-operator-controller:tag
+make docker-build docker-push IMG=gcr.io/ronas-cloud/projects-operator:tag
 ```
 	
 2. Deploy the controller to the cluster with the image specified by `IMG`:
 
 ```sh
-make deploy IMG=gcr.io/ronas-cloud/projects-operator-controller:tag
+make deploy IMG=gcr.io/ronas-cloud/projects-operator:tag
 ```
 
 ### Uninstall CRDs
