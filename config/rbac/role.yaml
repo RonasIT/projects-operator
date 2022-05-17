@@ -88,17 +88,28 @@ rules:
   resources:
   - "serviceaccounts"
   - "services"
+  - "persistentvolumes"
+  - "persistentvolumeclaims"
+  - "configmaps"
 - verbs:
   - "*"
   apiGroups:
   - "apps"
   resources:
   - "deployments"
+  - "statefulsets"
 - verbs:
   - "*"
   apiGroups:
   - networking.k8s.io
   resources:
   - ingresses
+- verbs:
+  - "*"
+  apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
 
 #+kubebuilder:scaffold:rules
