@@ -33,3 +33,10 @@ spec:
         - "--metrics-bind-address=127.0.0.1:8080"
         - "--leader-elect"
         - "--leader-election-id=projects-operator"
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1024Mi
+          requests:
+            cpu: 300m
+            memory: 512Mi
