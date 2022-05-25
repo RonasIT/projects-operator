@@ -56,9 +56,11 @@ jobs:
           cluster_name: '${{ secrets.GKE_CLUSTER_NAME }}'
           location: '${{ secrets.GKE_CLUSTER_REGION }}'
       
-      - name: Install & Setup Kustomize
+      - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
+
+      - name: Install CRDs
         run: |
           kustomize build config/crd | kubectl apply -f -
-          
+
       
