@@ -17,6 +17,7 @@ jobs:
         uses: FranzDiebold/github-env-vars-action@v2.3.1
 
       - name: 'Authenticate to Google Cloud'
+        id: auth
         uses: 'google-github-actions/auth@v0.7.0'
         with:
           credentials_json: '${{ secrets.GKE_SA_KEY }}'
@@ -24,7 +25,7 @@ jobs:
       - name: Build & Publish docker image
         uses: aevea/action-kaniko@master
         with:
-          image: '${{  steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}'
+          image: '${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}'
           tag: '${{ github.run_number }}'
           tag_with_latest: true
           username: 'oauth2accesstoken'
