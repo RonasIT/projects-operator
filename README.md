@@ -8,6 +8,12 @@
 You’ll need a Kubernetes cluster to run against. You can use [KIND](https://sigs.k8s.io/kind) to get a local cluster for testing, or run against a remote cluster.
 **Note:** Your controller will automatically use the current context in your kubeconfig file (i.e. whatever cluster `kubectl cluster-info` shows).
 
+### CI/CD
+
+#### Secrets
+
+- `GKE_SA_KEY`
+
 ### Running on the cluster
 
 1. Build and push your image to the location specified by `IMG`:

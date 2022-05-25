@@ -1,0 +1,33 @@
+name: Build, Push and Deploy 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: GitHub Environment Variables Action
+        uses: FranzDiebold/github-env-vars-action@v2.3.1
+
+      - name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0.7.0'
+        with:
+          credentials_json: '${{ secrets.GKE_SA_KEY }}'
+
+      - name: Build & Publish docker image
+        uses: aevea/action-kaniko@master
+        with:
+          image: '${{  steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}'
+          tag: '${{ github.run_number }}'
+          tag_with_latest: true
+          username: 'oauth2accesstoken'
+          password: '${{ steps.auth.outputs.access_token }}'
+          registry: 'gcr.io'
+      
