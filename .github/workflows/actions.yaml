@@ -63,4 +63,10 @@ jobs:
         run: |
           kustomize build config/crd | kubectl apply -f -
 
+      - name: Deploy
+        run: |
+          cd config/manager && kustomize edit set image controller="${{ env.IMAGE }}"
+        env:
+          IMAGE: 'gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}:${{ github.run_number }}'
+
       
