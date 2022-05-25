@@ -66,7 +66,11 @@ jobs:
       - name: Deploy
         run: |
           cd config/manager && kustomize edit set image controller="${{ env.IMAGE }}"
+          kustomize build config/default | kubectl apply -f -
         env:
           IMAGE: 'gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}:${{ github.run_number }}'
-
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'build: update image version to ${{ github.run_number }}'
       
