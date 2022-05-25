@@ -13,6 +13,8 @@ You’ll need a Kubernetes cluster to run against. You can use [KIND](https://si
 #### Secrets
 
 - `GKE_SA_KEY`
+- `GKE_CLUSTER_NAME`
+- `GKE_CLUSTER_REGION`
 
 ### Running on the cluster
 
