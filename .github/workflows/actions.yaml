@@ -22,6 +22,17 @@ jobs:
         with:
           token_format: 'access_token'
           credentials_json: '${{ secrets.GKE_SA_KEY }}'
+      
+      - name: Setup Helm
+        uses: azure/setup-helm@v1
+
+      - name: Helm repos add
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+
+      - name: Install Helm dependencies
+        run: |
+          helm dependency build helm-charts/laravel
 
       - name: Build & Publish docker image
         uses: aevea/action-kaniko@master
@@ -55,17 +66,6 @@ jobs:
         with:
           cluster_name: '${{ secrets.GKE_CLUSTER_NAME }}'
           location: '${{ secrets.GKE_CLUSTER_REGION }}'
-      
-      - name: Setup Helm
-        uses: azure/setup-helm@v1
-
-      - name: Helm repos add
-        run: |
-          helm repo add bitnami https://charts.bitnami.com/bitnami
-
-      - name: Install Helm dependencies
-        run: |
-          helm dependency build helm-charts/laravel
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -86,5 +86,6 @@ jobs:
       
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          file_pattern: 'config/**/*.yaml'
           commit_message: 'chore: bump projects-operator image version to ${{ github.run_number }}'
       
