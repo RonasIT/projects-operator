@@ -80,13 +80,13 @@ postgresql:
   primary:
     persistence:
       size: 1Gi
-  resources:
-    requests:
-      cpu: 150m
-      memory: 70Mi
-    limits:
-      cpu: 180m
-      memory: 90Mi
+    resources:
+      requests:
+        cpu: 150m
+        memory: 70Mi
+      limits:
+        cpu: 180m
+        memory: 90Mi
 
 redis:
   auth:
