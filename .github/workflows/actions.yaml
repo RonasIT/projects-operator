@@ -56,6 +56,17 @@ jobs:
           cluster_name: '${{ secrets.GKE_CLUSTER_NAME }}'
           location: '${{ secrets.GKE_CLUSTER_REGION }}'
       
+      - name: Setup Helm
+        uses: azure/setup-helm@v1
+
+      - name: Helm repos add
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+
+      - name: Install Helm dependencies
+        run: |
+          helm dependency build helm-charts/laravel
+
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
 
