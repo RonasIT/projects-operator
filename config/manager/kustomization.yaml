@@ -13,4 +13,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: gcr.io/ronas-cloud/projects-operator
-  newTag: "12"
+  newTag: "13"
