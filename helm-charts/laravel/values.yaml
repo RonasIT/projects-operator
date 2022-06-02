@@ -52,11 +52,11 @@ ingress:
 
 resources:
   requests:
-    cpu: 50m
-    memory: 128Mi
+    cpu: 70m
+    memory: 160Mi
   limits:
-    cpu: 150m
-    memory: 256Mi
+    cpu: 90m
+    memory: 200Mi
 
 autoscaling:
   enabled: false
@@ -82,11 +82,11 @@ postgresql:
       size: 1Gi
   resources:
     requests:
-      memory: 128Mi
-      cpu: 50m
-    limit:
-      memory: 256Mi
       cpu: 150m
+      memory: 70Mi
+    limits:
+      cpu: 180m
+      memory: 90Mi
 
 redis:
   auth:
@@ -95,46 +95,50 @@ redis:
   master:
     persistence:
       size: 1Gi
-  resources:
-    requests:
-      memory: 32Mi
-      cpu: 10m
-    limits:
-      memory: 128Mi
-      cpu: 50m
+    resources:
+      requests:
+        cpu: 15m
+        memory: 32Mi
+      limits:
+        cpu: 18m
+        memory: 64Mi
 
 cronjobs:
   enabled: false
   schedulers: []
-  defaultSchedule: "*/1 * * * *"
-  defaultConcurrencyPolicy: "Forbid"
-  defaultStartingDeadlineSeconds: 200
-  defaultSuccessfulJobsHistoryLimit: 1
-  defaultRestartPolicy: "Never"
-  defaultResources:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: "Forbid"
+  startingDeadlineSeconds: 200
+  successfulJobsHistoryLimit: 1
+  restartPolicy: "Never"
+  resources: 
     requests:
-      memory: 32Mi
-      cpu: 50m
+      cpu: 35m
+      memory: 80Mi
     limits:
-      memory: 128Mi
-      cpu: 100m
+      cpu: 45m
+      memory: 100Mi
 
 migration: 
   activeDeadlineSeconds: 180
   cmd: "php artisan migrate --force"
-  resources: {}
-    # We usually recommend not to specify default resources and to leave this as a conscious
-    # choice for the user. This also increases chances charts run on environments with little
-    # resources, such as Minikube. If you do want to specify resources, uncomment the following
-    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
+  resources: 
+    requests:
+      cpu: 35m
+      memory: 80Mi
+    limits:
+      cpu: 45m
+      memory: 100Mi
 
-workers: []
+workers: 
+  resources:
+    requests:
+      cpu: 35m
+      memory: 80Mi
+    limits:
+      cpu: 45m
+      memory: 100Mi
+  items: []
 #   - name: default
 #     replicaCount: 1
 #     cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"

@@ -9,10 +9,10 @@ metadata:
   labels:
     {{- include "laravel.labels" $root | nindent 4 }}
 spec:
-  schedule: "{{ .schedule | default $root.Values.cronjobs.defaultSchedule }}"
-  concurrencyPolicy: "{{ .concurrencyPolicy | default $root.Values.cronjobs.defaultConcurrencyPolicy }}"
-  startingDeadlineSeconds: {{ .startingDeadlineSeconds | default $root.Values.cronjobs.defaultStartingDeadlineSeconds }}
-  successfulJobsHistoryLimit: {{ .successfulJobsHistoryLimit | default $root.Values.cronjobs.defaultsuccessfulJobsHistoryLimit }}
+  schedule: "{{ .schedule | default $root.Values.cronjobs.schedule }}"
+  concurrencyPolicy: "{{ .concurrencyPolicy | default $root.Values.cronjobs.concurrencyPolicy }}"
+  startingDeadlineSeconds: {{ .startingDeadlineSeconds | default $root.Values.cronjobs.startingDeadlineSeconds }}
+  successfulJobsHistoryLimit: {{ .successfulJobsHistoryLimit | default $root.Values.cronjobs.successfulJobsHistoryLimit }}
   jobTemplate:
     spec:
       backoffLimit: 2
@@ -38,6 +38,6 @@ spec:
                 - sh
                 - -c
                 - {{ .cmd }}
-          restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.defaultRestartPolicy }}"
+          restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.restartPolicy }}"
 {{- end }}
 {{- end }}
