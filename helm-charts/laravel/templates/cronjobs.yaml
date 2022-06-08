@@ -33,7 +33,7 @@ spec:
               image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
               imagePullPolicy: {{ $root.Values.image.pullPolicy }}
               resources:
-                {{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
+{{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
               command:
                 - sh
                 - -c
