@@ -3,10 +3,8 @@
   version: v1alpha1
   kind: NextJS
   chart: helm-charts/nextjs
-  watchDependentResources: false
 - group: projects.ronas.cloud
   version: v1alpha1
   kind: Laravel
   chart: helm-charts/laravel
-  watchDependentResources: false
 #+kubebuilder:scaffold:watch
