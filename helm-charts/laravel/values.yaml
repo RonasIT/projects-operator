@@ -76,7 +76,7 @@ postgresql:
     enablePostgresUser: false
     database: "pgdb"
     username: "pguser"
-    password: "secret"
+    existingSecret: "postgresql-credentials"
   primary:
     persistence:
       size: 1Gi
@@ -90,7 +90,8 @@ postgresql:
 
 redis:
   auth:
-    password: "secret"
+    existingSecret: "redis-credentials"
+    existingSecretPasswordKey: "password"
   architecture: "standalone"
   master:
     persistence:
