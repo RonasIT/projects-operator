@@ -20,11 +20,4 @@ resources:
   group: projects
   kind: Laravel
   version: v1alpha1
-- api:
-    crdVersion: v1
-    namespaced: true
-  domain: ronas.cloud
-  group: projects
-  kind: InfiniteUpgrade
-  version: v1alpha1
 version: "3"

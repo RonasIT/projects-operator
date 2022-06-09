@@ -4,5 +4,4 @@
 resources:
 - bases/projects.ronas.cloud_nextjs.yaml
 - bases/projects.ronas.cloud_laravels.yaml
-- bases/projects.ronas.cloud_infiniteupgrades.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
