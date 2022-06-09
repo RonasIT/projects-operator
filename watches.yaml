@@ -13,5 +13,8 @@
   version: v1alpha1
   kind: InfiniteUpgrade
   chart: helm-charts/infiniteupgrade
-  watchDependentResources: false
+  watchDependentResources: False
+  selector:
+    matchExpressions:
+     - {key: testLabel}
 #+kubebuilder:scaffold:watch
