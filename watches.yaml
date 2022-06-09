@@ -14,4 +14,7 @@
   kind: InfiniteUpgrade
   chart: helm-charts/infiniteupgrade
   watchDependentResources: False
+  selector:
+    matchExpressions:
+     - {key: testLabel}
 #+kubebuilder:scaffold:watch
