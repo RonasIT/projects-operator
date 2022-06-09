@@ -9,4 +9,9 @@
   kind: Laravel
   chart: helm-charts/laravel
   watchDependentResources: false
+- group: projects.ronas.cloud
+  version: v1alpha1
+  kind: InfiniteUpgrade
+  chart: helm-charts/infiniteupgrade
+  watchDependentResources: false
 #+kubebuilder:scaffold:watch
