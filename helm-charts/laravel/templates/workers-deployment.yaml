@@ -33,5 +33,5 @@ spec:
           - -c
           - {{ .cmd }}
         resources:
-          {{ toYaml ( .resources | default $root.Values.workers.resources ) | indent 10 | trim }}
+{{ toYaml ( .resources | default $root.Values.workers.resources ) | indent 10 }}
 {{- end }}
