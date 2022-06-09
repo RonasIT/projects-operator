@@ -33,8 +33,7 @@ spec:
         - "--metrics-bind-address=127.0.0.1:8080"
         - "--leader-elect"
         - "--leader-election-id=projects-operator"
-        - "--zap-encoder=json"
-        - "--zap-log-level=debug"
+        - "--zap-devel"
         resources:
           limits:
             cpu: 500m
