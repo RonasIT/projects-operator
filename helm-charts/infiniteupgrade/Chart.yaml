@@ -4,3 +4,6 @@ description: A Helm chart for Kubernetes
 name: infiniteupgrade
 type: application
 version: 0.1.0
+dependencies:
+  - name: subchart
+    version: 0.1.x
