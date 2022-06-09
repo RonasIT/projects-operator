@@ -7,3 +7,6 @@ version: 0.1.0
 dependencies:
   - name: subchart
     version: 0.1.x
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: "11.2.1"

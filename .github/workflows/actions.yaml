@@ -33,6 +33,7 @@ jobs:
       - name: Install Helm dependencies
         run: |
           helm dependency update helm-charts/laravel
+          helm dependency update helm-charts/infiniteupgrade
 
       - name: Build & Publish docker image
         uses: aevea/action-kaniko@master
