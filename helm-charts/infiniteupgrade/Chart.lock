@@ -1,9 +1,0 @@
-dependencies:
-- name: subchart
-  repository: ""
-  version: 0.1.x
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 11.2.1
-digest: sha256:e6310e4bfa9f83c1188a36fb1e1488d0a5a6b77cebc2ffb00e5a56fced2a4d98
-generated: "2022-06-09T10:49:47.340579+06:00"
