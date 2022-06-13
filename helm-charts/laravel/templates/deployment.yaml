@@ -52,8 +52,17 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 20
             timeoutSeconds: 10
+          volumeMounts:
+          - name: gcs
+            mountPath: "/mnt/gcs"
+            readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+      - name: gcs
+        secret:
+          secretName: gcs-key
+          optional: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
