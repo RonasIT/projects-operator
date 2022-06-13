@@ -5,5 +5,8 @@ dependencies:
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 16.9.5
-digest: sha256:f9d81db761f18f020ef89cd20ecb16deb2ca4d5c5cf7333cd252658a0696662b
-generated: "2022-05-17T18:48:39.714419+06:00"
+- name: namespace
+  repository: https://ameijer.github.io/k8s-as-helm
+  version: 1.1.0
+digest: sha256:4d4b9a036d36f2e3110f02b3abd60aca3937e500e3e9f3f4337fa465496172e5
+generated: "2022-06-13T13:08:26.954494+06:00"
