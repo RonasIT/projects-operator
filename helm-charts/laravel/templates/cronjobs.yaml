@@ -32,12 +32,21 @@ spec:
             - name: {{ regexReplaceAll "_" .name "-" }}-cronjob
               image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
               imagePullPolicy: {{ $root.Values.image.pullPolicy }}
+              volumeMounts:
+                - name: gcs
+                  mountPath: "/mnt/gcs"
+                  readOnly: true
               resources:
 {{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
               command:
                 - sh
                 - -c
                 - {{ .cmd }}
+          volumes:
+            - name: gcs
+              secret:
+                secretName: gcs-key
+                optional: true
           restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.restartPolicy }}"
 {{- end }}
 {{- end }}
