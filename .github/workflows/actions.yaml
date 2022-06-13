@@ -29,7 +29,6 @@ jobs:
       - name: Helm repos add
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm repo add k8s-as-helm https://ameijer.github.io/k8s-as-helm
 
       - name: Install Helm dependencies
         run: |
