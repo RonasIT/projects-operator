@@ -29,19 +29,19 @@ spec:
           securityContext:
             {{- toYaml $root.Values.podSecurityContext | nindent 12 }}
           containers:
-            - name: {{ regexReplaceAll "_" .name "-" }}-cronjob
-              image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
-              imagePullPolicy: {{ $root.Values.image.pullPolicy }}
-              volumeMounts:
-                - name: gcs
-                  mountPath: "/mnt/gcs"
-                  readOnly: true
-              resources:
+          - name: {{ regexReplaceAll "_" .name "-" }}-cronjob
+            image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
+            imagePullPolicy: {{ $root.Values.image.pullPolicy }}
+            volumeMounts:
+              - name: gcs
+                mountPath: "/mnt/gcs"
+                readOnly: true
+            resources:
 {{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
-              command:
-                - sh
-                - -c
-                - {{ .cmd }}
+            command:
+              - sh
+              - -c
+              - {{ .cmd }}
           volumes:
             - name: gcs
               secret:

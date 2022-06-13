@@ -25,19 +25,19 @@ spec:
       securityContext:
         {{- toYaml $root.Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ regexReplaceAll "_" .name "-" }}-worker
-          image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
-          imagePullPolicy: IfNotPresent
-          volumeMounts:
-            - name: gcs
-              mountPath: "/mnt/gcs"
-              readOnly: true
-          resources:
+      - name: {{ regexReplaceAll "_" .name "-" }}-worker
+        image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: gcs
+            mountPath: "/mnt/gcs"
+            readOnly: true
+        resources:
 {{ toYaml ( .resources | default $root.Values.workers.resources ) | indent 10 }}
-          command: 
-            - sh
-            - -c
-            - {{ .cmd }}
+        command: 
+          - sh
+          - -c
+          - {{ .cmd }}
       volumes:
         - name: gcs
           secret:

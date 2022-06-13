@@ -20,19 +20,19 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ include "laravel.fullname" . }}-db-migrate
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          volumeMounts:
-            - name: gcs
-              mountPath: "/mnt/gcs"
-              readOnly: true
-          resources:
-            {{- toYaml .Values.migration.resources | nindent 12 }}
-          command:
-            - sh
-            - -c
-            - {{ .Values.migration.cmd }}
+      - name: {{ include "laravel.fullname" . }}-db-migrate
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts:
+          - name: gcs
+            mountPath: "/mnt/gcs"
+            readOnly: true
+        resources:
+{{- toYaml .Values.migration.resources | nindent 12 }}
+        command:
+          - sh
+          - -c
+          - {{ .Values.migration.cmd }}
       restartPolicy: Never
       volumes:
         - name: gcs
