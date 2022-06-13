@@ -146,5 +146,6 @@ workers:
 #     cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
 
 namespace:
+  nameOverride: {{ .Release.Namespace }}
   labels:
     "test-custom/label": "the-value"
