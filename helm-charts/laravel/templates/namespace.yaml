@@ -2,9 +2,10 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: {{ .Release.Namespace }}
-  labels:
-    kubernetes.io/metadata.name: {{ .Release.Namespace }}
+  annotations:
     app.kubernetes.io/managed-by: "Helm"
     meta.helm.sh/release-name: {{ .Release.Name }}
     meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  labels:
+    kubernetes.io/metadata.name: {{ .Release.Namespace }}
     custom/label: "value"
