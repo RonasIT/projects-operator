@@ -4,4 +4,7 @@ metadata:
   name: {{ .Release.Namespace }}
   labels:
     kubernetes.io/metadata.name: {{ .Release.Namespace }}
+    app.kubernetes.io/managed-by: "helm"
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
     custom/label: "value"
