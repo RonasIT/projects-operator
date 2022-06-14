@@ -121,7 +121,6 @@ cronjobs:
       memory: 100Mi
 
 migration:
-  enabled: true
   activeDeadlineSeconds: 180
   cmd: "php artisan migrate --force"
   resources: 
