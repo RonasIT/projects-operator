@@ -80,6 +80,9 @@ postgresql:
   primary:
     persistence:
       size: 1Gi
+    service:
+      annotations:
+        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 150m
