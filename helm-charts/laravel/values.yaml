@@ -80,6 +80,10 @@ postgresql:
   primary:
     persistence:
       size: 1Gi
+    service:
+      type: LoadBalancer
+      annotations:
+        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 150m
@@ -96,6 +100,10 @@ redis:
   master:
     persistence:
       size: 1Gi
+    service:
+      type: LoadBalancer
+      annotations:
+        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 15m
