@@ -113,7 +113,7 @@ redis:
         memory: 64Mi
 
 soketi:
-  enabled: true
+  enabled: false
   app:
     resources:
       requests:
