@@ -29,6 +29,7 @@ jobs:
       - name: Helm repos add
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add bitnami https://helm.soketi.app
 
       - name: Install Helm dependencies
         run: |
