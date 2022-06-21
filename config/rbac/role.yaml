@@ -117,5 +117,6 @@ rules:
   - rbac.authorization.k8s.io
   resources:
   - roles
+  - rolebindings
 
 #+kubebuilder:scaffold:rules
