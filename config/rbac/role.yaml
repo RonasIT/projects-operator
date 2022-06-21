@@ -111,5 +111,11 @@ rules:
   resources:
   - jobs
   - cronjobs
+- verbs:
+  - "*"
+  apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
 
 #+kubebuilder:scaffold:rules
