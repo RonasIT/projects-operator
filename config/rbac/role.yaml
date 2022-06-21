@@ -91,6 +91,7 @@ rules:
   - "persistentvolumes"
   - "persistentvolumeclaims"
   - "configmaps"
+  - "deployments"
 - verbs:
   - "*"
   apiGroups:
