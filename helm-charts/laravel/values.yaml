@@ -122,7 +122,6 @@ soketi:
       limits:
         cpu: 250m
         memory: 256Mi
-        app:
     extraEnv:
       - name: SOKETI_DEFAULT_APP_ID
         valueFrom:
