@@ -122,6 +122,21 @@ soketi:
       limits:
         cpu: 250m
         memory: 256Mi
+        app:
+    extraEnv:
+      - name: SOKETI_DEFAULT_APP_ID
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: SOKETI_DEFAULT_APP_KEY
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: SOKETI_DEFAULT_APP_SECRET
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      
   ingress:
     enabled: true
     annotations: 
