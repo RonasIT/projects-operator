@@ -1,22 +1,28 @@
 apiVersion: projects.ronas.cloud/v1alpha1
 kind: Laravel
 metadata:
-  name: laravel-empty-project
+  name: lainappi-laravel
 spec:
   image:
-    repository: laravel-empty-project
-    tag: latest
+    repository: lainappi-laravel
+    tag: '1'
   ingress:
-    host: laravel-empty-project.ronas.cloud
-  cronjobs:
-    enabled: true
-    schedulers:
-      - name: clear-set-password-hash
-        cmd: "php /app/artisan clear:set-password-hash"
-  workers:
-  - name: default
-    replicaCount: 1
-    cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
-  - name: the-second
-    replicaCount: 2
-    cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
+    host: api.lainappi.ronas.cloud
+  soketi:
+    ingress:
+      hosts:
+        - host: socket.lainappi.ronas.cloud
+          paths:
+            - /
+  # cronjobs:
+  #   enabled: true
+  #   schedulers:
+  #     - name: clear-set-password-hash
+  #       cmd: "php /app/artisan clear:set-password-hash"
+  # workers:
+  # - name: default
+  #   replicaCount: 1
+  #   cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
+  # - name: the-second
+  #   replicaCount: 2
+  #   cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"

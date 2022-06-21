@@ -112,6 +112,25 @@ redis:
         cpu: 18m
         memory: 64Mi
 
+soketi:
+  enabled: false
+  app:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+  ingress:
+    enabled: true
+    annotations: 
+      kubernetes.io/ingress.class: nginx
+      ingress.kubernetes.io/rewrite-target: /
+      cert-manager.io/cluster-issuer: cert-manager
+      certmanager.k8s.io/cluster-issuer: cert-manager
+    hosts: []
+
 cronjobs:
   enabled: false
   schedulers: []
