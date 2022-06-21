@@ -126,15 +126,15 @@ soketi:
       - name: SOKETI_DEFAULT_APP_ID
         valueFrom:
           fieldRef:
-            fieldPath: metadata.labels.app.kubernetes.io/instance
+            fieldPath: metadata.namespace
       - name: SOKETI_DEFAULT_APP_KEY
         valueFrom:
           fieldRef:
-            fieldPath: metadata.labels.app.kubernetes.io/instance
+            fieldPath: metadata.namespace
       - name: SOKETI_DEFAULT_APP_SECRET
         valueFrom:
           fieldRef:
-            fieldPath: metadata.labels.app.kubernetes.io/instance
+            fieldPath: metadata.namespace
       
   ingress:
     enabled: true
