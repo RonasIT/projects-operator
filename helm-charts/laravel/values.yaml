@@ -123,6 +123,8 @@ soketi:
         cpu: 250m
         memory: 256Mi
     extraEnv:
+      - name: SOKETI_DEBUG
+        value: "1"
       - name: SOKETI_DEFAULT_APP_ID
         valueFrom:
           fieldRef:
