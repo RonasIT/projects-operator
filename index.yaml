@@ -1,0 +1,36 @@
+apiVersion: v1
+entries:
+  laravel:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-01T11:00:42.094750104Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.2.1
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.9.5
+    - condition: soketi.enabled
+      name: soketi
+      repository: https://helm.soketi.app
+      version: 0.16.2
+    description: A Helm chart for Kubernetes
+    digest: 51b766e6fd99ea1f1aeb7ae8dcd99ffde877e09e915db12e536b23d0e70ee0ab
+    name: laravel
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/laravel-1.0.0/laravel-1.0.0.tgz
+    version: 1.0.0
+  nextjs:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-01T11:00:42.222256576Z"
+    description: A Helm chart for Kubernetes
+    digest: ed028caaa905407ba7e8161f34645a7f50c81bbd5f4caade9c50a7df9b6aedb4
+    name: nextjs
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/nextjs-1.0.0/nextjs-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-07-01T11:00:42.222261576Z"
