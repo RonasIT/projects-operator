@@ -1,11 +1,11 @@
 domain: ronas.cloud
 layout:
 - helm.sdk.operatorframework.io/v1
+multigroup: true
 plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
 projectName: projects-operator
-multigroup: true
 resources:
 - api:
     crdVersion: v1
@@ -27,5 +27,12 @@ resources:
   domain: ronas.cloud
   group: projects
   kind: React
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  domain: ronas.cloud
+  group: projects
+  kind: Angular
   version: v1alpha1
 version: "3"

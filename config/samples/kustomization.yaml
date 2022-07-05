@@ -2,4 +2,5 @@
 resources:
 - projects_v1alpha1_laravel.yaml
 - projects.ronas.cloud_v1alpha1_react.yaml
+- projects_v1alpha1_angular.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples
