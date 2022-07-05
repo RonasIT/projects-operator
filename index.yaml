@@ -54,4 +54,15 @@ entries:
     urls:
     - https://github.com/RonasIT/projects-operator/releases/download/nextjs-1.0.0/nextjs-1.0.0.tgz
     version: 1.0.0
-generated: "2022-07-04T05:54:10.752142708Z"
+  react:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-05T05:09:10.333002559Z"
+    description: A Helm chart for Kubernetes
+    digest: c2e6bc6cdc8ce2c68f489393383f7d928bc846f8487478a918771d899681af25
+    name: react
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/react-0.1.0/react-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-07-05T05:09:10.33301636Z"
