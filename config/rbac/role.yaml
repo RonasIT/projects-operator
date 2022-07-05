@@ -120,4 +120,56 @@ rules:
   - roles
   - rolebindings
 
+##
+## Rules for projects.ronas.cloud/v1alpha1, Kind: React
+##
+- apiGroups:
+  - projects.ronas.cloud
+  resources:
+  - reacts
+  - reacts/status
+  - reacts/finalizers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - services/finalizers
+  - endpoints
+  - persistentvolumeclaims
+  - events
+  - configmaps
+  - secrets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - daemonsets
+  - replicasets
+  - statefulsets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+
 #+kubebuilder:scaffold:rules
