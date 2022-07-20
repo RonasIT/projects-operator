@@ -3,6 +3,16 @@ entries:
   angular:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-07-20T09:02:22.275248104Z"
+    description: A Helm chart for Kubernetes
+    digest: 62da6dab740dc8a95f6650721afc949b1029783ec647f8b3012767a79839ddf0
+    name: angular
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/angular-1.0.2/angular-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-07-05T13:09:31.246977188Z"
     description: A Helm chart for Kubernetes
     digest: d429abbe704588da80945514e29ca4aa6f38130b697ad1ccb130759992ee89ce
@@ -96,4 +106,4 @@ entries:
     urls:
     - https://github.com/RonasIT/projects-operator/releases/download/react-0.1.0/react-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-05T13:09:31.246992888Z"
+generated: "2022-07-20T09:02:22.275263204Z"
