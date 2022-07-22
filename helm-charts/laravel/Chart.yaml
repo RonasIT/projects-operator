@@ -7,7 +7,7 @@ version: 1.0.1
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: "11.2.1"
+    version: "11.6.18"
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: "16.9.5"
