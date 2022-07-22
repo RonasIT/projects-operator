@@ -3,7 +3,7 @@ appVersion: 1.16.0
 description: A Helm chart for Kubernetes
 name: laravel
 type: application
-version: 1.0.1
+version: 1.0.2
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
