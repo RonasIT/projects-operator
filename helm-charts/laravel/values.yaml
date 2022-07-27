@@ -72,11 +72,34 @@ tolerations: []
 affinity: {}
 
 postgresql:
+  enabled: true
   auth:
     enablePostgresUser: false
     database: "pgdb"
     username: "pguser"
     existingSecret: "postgresql-credentials"
+  primary:
+    persistence:
+      size: 1Gi
+    service:
+      type: LoadBalancer
+      annotations:
+        networking.gke.io/load-balancer-type: "Internal"
+    resources:
+      requests:
+        cpu: 150m
+        memory: 70Mi
+      limits:
+        cpu: 180m
+        memory: 90Mi
+
+mysql:
+  enabled: false
+  auth:
+    enablePostgresUser: false
+    database: "mydb"
+    username: "myuser"
+    existingSecret: "mysql-credentials"
   primary:
     persistence:
       size: 1Gi
