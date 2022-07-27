@@ -95,8 +95,6 @@ postgresql:
 
 mysql:
   enabled: false
-  image:
-    tag: "5.7.38-debian-11-r18"
   auth:
     enablePostgresUser: false
     database: "mydb"
