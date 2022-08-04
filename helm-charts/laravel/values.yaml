@@ -112,7 +112,7 @@ mysql:
         memory: 192Mi
       limits:
         cpu: 180m
-        memory: 256i
+        memory: 256Mi
 
 redis:
   auth:
