@@ -96,7 +96,6 @@ postgresql:
 mysql:
   enabled: false
   auth:
-    enablePostgresUser: false
     database: "mydb"
     username: "myuser"
     existingSecret: "mysql-credentials"
@@ -110,10 +109,10 @@ mysql:
     resources:
       requests:
         cpu: 150m
-        memory: 70Mi
+        memory: 192Mi
       limits:
         cpu: 180m
-        memory: 90Mi
+        memory: 256Mi
 
 redis:
   auth:
