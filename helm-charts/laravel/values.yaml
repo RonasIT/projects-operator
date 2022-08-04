@@ -179,7 +179,9 @@ soketi:
 
 cronjobs:
   enabled: false
-  schedulers: []
+  schedulers: 
+    - name: default
+      cmd: "php artisan schedule:run || true"
   schedule: "*/1 * * * *"
   concurrencyPolicy: "Forbid"
   startingDeadlineSeconds: 200
