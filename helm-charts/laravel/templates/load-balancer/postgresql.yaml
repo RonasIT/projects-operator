@@ -1,4 +1,4 @@
-{{- if and .Values.postgresql.enabled  .Values.postgresql.enabledExternalAccess -}}
+{{- if and .Values.postgresql.enabled .Values.postgresql.loadBalancer.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,7 +6,9 @@ metadata:
   labels:
     {{- include "laravel.labels" . | nindent 4 }}
   annotations:
+    {{- if .Values.postgresql.loadBalancer.internal }}
     {{- include "laravel.internalLoadBalancerAnnotations" . | nindent 4 }}
+    {{- end }}
 spec:
   type: LoadBalancer
   ports:

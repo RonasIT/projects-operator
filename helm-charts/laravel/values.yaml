@@ -82,7 +82,9 @@ affinity: {}
 
 postgresql:
   enabled: true
-  enabledExternalAccess: false
+  loadBalancer:
+    enabled: false
+    internal: true
   auth:
     enablePostgresUser: false
     database: "pgdb"
@@ -101,7 +103,9 @@ postgresql:
 
 mysql:
   enabled: false
-  enabledExternalAccess: false
+  loadBalancer:
+    enabled: false
+    internal: true
   auth:
     database: "mydb"
     username: "myuser"
@@ -119,7 +123,9 @@ mysql:
 
 redis:
   enabled: true
-  enabledExternalAccess: false
+  loadBalancer:
+    enabled: false
+    internal: true
   auth:
     existingSecret: "redis-credentials"
     existingSecretPasswordKey: "password"

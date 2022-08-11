@@ -1,4 +1,4 @@
-{{- if and .Values.mysql.enabled  .Values.mysql.enabledExternalAccess -}}
+{{- if and .Values.mysql.enabled .Values.mysql.loadBalancer.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,7 +6,9 @@ metadata:
   labels:
     {{- include "laravel.labels" . | nindent 4 }}
   annotations:
-    networking.gke.io/load-balancer-type: Internal
+    {{- if .Values.mysql.loadBalancer.internal }}
+    {{- include "laravel.internalLoadBalancerAnnotations" . | nindent 4 }}
+    {{- end }}
 spec:
   type: LoadBalancer
   ports:

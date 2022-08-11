@@ -7,13 +7,18 @@ spec:
     enabled: false
   postgresql:
     enabled: true
-    enabledExternalAccess: true
+    loadBalancer:
+      enabled: true
+      internal: false
   mysql:
     enabled: true 
-    enabledExternalAccess: true 
+    loadBalancer:
+      enabled: true
   redis:
     enabled: true
-    enabledExternalAccess: true
+    loadBalancer:
+      enabled: true
+      internal: false
   migration:
     enabled: false
   workers:
