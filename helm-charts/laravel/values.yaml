@@ -137,10 +137,10 @@ redis:
         networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
-        cpu: 15m
+        cpu: 42m
         memory: 32Mi
       limits:
-        cpu: 18m
+        cpu: 54m
         memory: 64Mi
 
 soketi:
