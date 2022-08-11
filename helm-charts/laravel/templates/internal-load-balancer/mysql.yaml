@@ -1,0 +1,21 @@
+{{- if and .Values.mysql.enabled  .Values.mysql.enabledExternalAccess -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "laravel.fullname" . }}-mysql-external
+  labels:
+    {{- include "laravel.labels" . | nindent 4 }}
+  annotations:
+    networking.gke.io/load-balancer-type: Internal
+spec:
+  type: LoadBalancer
+  ports:
+    - port: {{ .Values.mysql.primary.service.ports.mysql | default 3306 }}
+      targetPort: mysql
+      protocol: TCP
+      name: mysql
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/component: primary
+{{- end }}

@@ -1,0 +1,21 @@
+{{- if and .Values.redis.enabled .Values.redis.enabledExternalAccess -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "laravel.fullname" . }}-redis-external
+  labels:
+    {{- include "laravel.labels" . | nindent 4 }}
+  annotations:
+    {{- include "laravel.internalLoadBalancerAnnotations" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: {{ .Values.redis.master.service.ports.redis | default 6379 }}
+      targetPort: redis
+      protocol: TCP
+      name: tcp-redis
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/component: master
+{{- end }}

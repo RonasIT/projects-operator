@@ -82,6 +82,7 @@ affinity: {}
 
 postgresql:
   enabled: true
+  enabledExternalAccess: false
   auth:
     enablePostgresUser: false
     database: "pgdb"
@@ -90,10 +91,6 @@ postgresql:
   primary:
     persistence:
       size: 1Gi
-    service:
-      type: LoadBalancer
-      annotations:
-        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 150m
@@ -104,6 +101,7 @@ postgresql:
 
 mysql:
   enabled: false
+  enabledExternalAccess: false
   auth:
     database: "mydb"
     username: "myuser"
@@ -111,10 +109,6 @@ mysql:
   primary:
     persistence:
       size: 1Gi
-    service:
-      type: LoadBalancer
-      annotations:
-        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 150m
@@ -124,6 +118,8 @@ mysql:
         memory: 256Mi
 
 redis:
+  enabled: true
+  enabledExternalAccess: false
   auth:
     existingSecret: "redis-credentials"
     existingSecretPasswordKey: "password"
@@ -131,10 +127,6 @@ redis:
   master:
     persistence:
       size: 1Gi
-    service:
-      type: LoadBalancer
-      annotations:
-        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 42m
@@ -196,6 +188,7 @@ cronjobs:
       memory: 100Mi
 
 migration:
+  enabled: true
   activeDeadlineSeconds: 180
   cmd: "php artisan migrate --force"
   resources: 
@@ -207,6 +200,7 @@ migration:
       memory: 100Mi
 
 workers: 
+  enabled: true
   resources:
     requests:
       cpu: 35m

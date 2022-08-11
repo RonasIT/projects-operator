@@ -60,3 +60,13 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Internal load balancer annotations
+*/}}
+{{- define "laravel.internalLoadBalancerAnnotations" -}}
+networking.gke.io/load-balancer-type: Internal
+networking.eks.amazonaws.com/load-balancer-type: Internal
+service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+{{- end }}
+
