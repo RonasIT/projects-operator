@@ -1,3 +1,4 @@
+{{- if .Values.workers.enabled -}}
 {{- $root := . -}}
 {{- range .Values.workers.items }}
 ---
@@ -43,4 +44,5 @@ spec:
           secret:
             secretName: gcs-key
             optional: true
+{{- end }}
 {{- end }}

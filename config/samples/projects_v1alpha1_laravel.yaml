@@ -1,28 +1,25 @@
 apiVersion: projects.ronas.cloud/v1alpha1
 kind: Laravel
 metadata:
-  name: lainappi-laravel
+  name: sample-laravel
 spec:
-  image:
-    repository: lainappi-laravel
-    tag: '1'
   ingress:
-    host: api.lainappi.ronas.cloud
-  soketi:
-    ingress:
-      hosts:
-        - host: socket.lainappi.ronas.cloud
-          paths:
-            - /
-  # cronjobs:
-  #   enabled: true
-  #   schedulers:
-  #     - name: clear-set-password-hash
-  #       cmd: "php /app/artisan clear:set-password-hash"
-  # workers:
-  # - name: default
-  #   replicaCount: 1
-  #   cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
-  # - name: the-second
-  #   replicaCount: 2
-  #   cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --backoff=3 --queue=default --memory=128"
+    enabled: false
+  postgresql:
+    enabled: true
+    loadBalancer:
+      enabled: true
+      internal: false
+  mysql:
+    enabled: true 
+    loadBalancer:
+      enabled: true
+  redis:
+    enabled: true
+    loadBalancer:
+      enabled: true
+      internal: false
+  migration:
+    enabled: false
+  workers:
+    enabled: false 
