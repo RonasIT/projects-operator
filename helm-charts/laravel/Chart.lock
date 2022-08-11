@@ -11,5 +11,5 @@ dependencies:
 - name: soketi
   repository: https://helm.soketi.app
   version: 0.16.2
-digest: sha256:f08624e08dc9349f499ec3927adcb9586e8282afda07cdf0f9bbace5bb0d1b61
-generated: "2022-07-26T13:07:58.439971+06:00"
+digest: sha256:84e98c7729cc0647512c6a169e1b7cbd4a4afe24368e3b9f81df196a803526b1
+generated: "2022-08-11T15:57:38.364624+06:00"
