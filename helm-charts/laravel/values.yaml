@@ -143,6 +143,8 @@ redis:
 
 soketi:
   enabled: false
+  service:
+    port: 6001
   app:
     resources:
       requests:
