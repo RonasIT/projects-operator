@@ -1,11 +1,11 @@
-# Projects Operator
+# 🐙 Projects Operator
 
 Projects operator helps development companies which are working on more than one project at the same time. It allows to save time on deploy and replace DevOps routine tasks with the smart solution. At this stage the next frameworks are supported:
 
-- Laravel;
-- React;
-- NextJS;
-- Angular.
+<a href="https://laravel.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-plain-wordmark.svg" alt="laravel" width="16" height="16"/>&nbsp;Laravel</a>  
+<a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="16" height="16"/>&nbsp;React</a>  
+<a href="https://nextjs.org/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="nextjs" width="16" height="16"/>&nbsp;NextJS</a>  
+<a href="https://angular.io" target="_blank" rel="noreferrer"> <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" width="16" height="16"/>&nbsp;Angular</a>
 
 We are more than happy to add more to cover as many cases as possible. Please feel free to open PR/issue with the technology you wish to see here.
 
@@ -21,13 +21,13 @@ Projects operator simultaneously tracks changes in project's resources and helm 
 
 ## Benefits
 
-- Fast start.
-- Allows developers to be sure all apps are updated.
-- Manage everything from single place.
-- Fully automated.
-- Cloud agnostic.
-- Flexible and customizable.
-- Smart resource usage.
+🚀 Fast start  
+🔧 Allows developers to be sure all apps are updated  
+👁 Manage everything from single place  
+🍕 Fully automated  
+☁️ Cloud agnostic  
+💪 Flexible and customizable  
+🪵 Smart resource usage  
 
 ## Current status
 
@@ -35,13 +35,13 @@ At the moment projects operator is under extensive development. The number of th
 
 Our plans are to cover the next cases by the end of 2022:
 
-- [x] Laravel;
-- [x] Angular;
-- [x] React;
-- [x] NextJS;
-- [ ] Django;
-- [ ] NestJS;
-- [ ] MongoDB.
+- [x] Laravel
+- [x] Angular
+- [x] React
+- [x] NextJS
+- [ ] Django
+- [ ] NestJS
+- [ ] MongoDB
 
 ## Developer quick start
 
