@@ -1,4 +1,5 @@
 # Projects Operator
+
 Projects operator helps development companies which are working on more than one project at the same time. It allows to save time on deploy and replace DevOps routine tasks with the smart solution. At this stage the next frameworks are supported:
 
 - Laravel;
@@ -9,6 +10,7 @@ Projects operator helps development companies which are working on more than one
 We are more than happy to add more to cover as many cases as possible. Please feel free to open PR/issue with the technology you wish to see here.
 
 ## Description
+
 Projects operator is k8s application which manages projects developed using various frameworks and thechnologies. For each framework there is a helm chart developed in line with its specifics and possible dependencies.
 
 Helm charts are used as projects templates.To describe the specific project there is a short manifest. Manifest points to operator which chart should be used to launch the project and with which values. Projects operator merges values from manifest with values from chart and creates resource in k8s cluster. 
@@ -18,6 +20,7 @@ Based on the created resource projects operator manages helm releases for each p
 Projects operator simultaneously tracks changes in project's resources and helm charts as well. In case of changes, it updates the projects affected by these changes.  
 
 ## Benefits
+
 - Fast start.
 - Allows developers to be sure all apps are updated.
 - Manage everything from single place.
@@ -27,15 +30,21 @@ Projects operator simultaneously tracks changes in project's resources and helm 
 - Smart resource usage.
 
 ## Current status
+
 At the moment projects operator is under extensive development. The number of the projects running via operator are growing, so we do fixes and add new supported technologies on a fly. 
 
-In our plans to cover the next cases by the end of 2022:
-- [ ] Python + Django;
-- [ ] Node + NestJS;
-- [ ] Redis Timeseries;
+Our plans are to cover the next cases by the end of 2022:
+
+- [x] Laravel
+- [x] Angular
+- [x] React
+- [x] NextJS
+- [ ] Django;
+- [ ] NestJS;
 - [ ] MongoDB.
 
 ## Developer quick start
+
 You’ll need a Kubernetes cluster to run against. You can use [KIND](https://sigs.k8s.io/kind) to get a local cluster for testing, or run against a remote cluster.
 **Note:** Your controller will automatically use the current context in your kubeconfig file (i.e. whatever cluster `kubectl cluster-info` shows).
 
