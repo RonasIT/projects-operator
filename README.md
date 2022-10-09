@@ -78,7 +78,7 @@ metadata:
 spec:
   ingress:
     host: api.laravl.example.com
-	soketi:
+  soketi:
     enabled: true
     host:  ws.laravel.example.com
 ```
