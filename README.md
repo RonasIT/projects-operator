@@ -35,10 +35,10 @@ At the moment projects operator is under extensive development. The number of th
 
 Our plans are to cover the next cases by the end of 2022:
 
-- [x] Laravel
-- [x] Angular
-- [x] React
-- [x] NextJS
+- [x] Laravel;
+- [x] Angular;
+- [x] React;
+- [x] NextJS;
 - [ ] Django;
 - [ ] NestJS;
 - [ ] MongoDB.
