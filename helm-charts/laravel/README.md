@@ -1,6 +1,6 @@
 # laravel
 
-![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -55,7 +55,7 @@ $ helm install my-release ronas/laravel
 | ingress.enabled | bool | `true` |  |
 | ingress.host | string | `"laravel.ronas.cloud"` |  |
 | livenessProbe.enabled | bool | `true` |  |
-| livenessProbe.path | string | `"/"` |  |
+| livenessProbe.path | string | `"/status"` |  |
 | livenessProbe.port | string | `"http"` |  |
 | migration.activeDeadlineSeconds | int | `180` |  |
 | migration.cmd | string | `"php artisan migrate --force"` |  |
@@ -92,7 +92,7 @@ $ helm install my-release ronas/laravel
 | postgresql.primary.resources.requests.cpu | string | `"150m"` |  |
 | postgresql.primary.resources.requests.memory | string | `"70Mi"` |  |
 | readinessProbe.enabled | bool | `true` |  |
-| readinessProbe.path | string | `"/"` |  |
+| readinessProbe.path | string | `"/status"` |  |
 | readinessProbe.port | string | `"http"` |  |
 | redis.architecture | string | `"standalone"` |  |
 | redis.auth.existingSecret | string | `"redis-credentials"` |  |
