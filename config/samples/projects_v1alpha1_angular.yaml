@@ -1,7 +1,7 @@
 apiVersion: projects.ronas.cloud/v1alpha1
 kind: Angular
 metadata:
-  name: demo-angular
+  name: sample-angular
 spec:
   image:
     repository: nginx
