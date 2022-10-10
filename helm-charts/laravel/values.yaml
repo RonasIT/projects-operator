@@ -30,11 +30,11 @@ podSecurityContext: {}
 
 livenessProbe:
   enabled: true
-  path: /
+  path: /status
   port: http
 readinessProbe:
   enabled: true
-  path: /
+  path: /status
   port: http
 
 securityContext: {}
