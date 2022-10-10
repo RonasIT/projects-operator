@@ -28,6 +28,15 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
+livenessProbe:
+  enabled: true
+  path: /status
+  port: http
+readinessProbe:
+  enabled: true
+  path: /status
+  port: http
+
 securityContext: {}
   # capabilities:
   #   drop:
@@ -72,6 +81,10 @@ tolerations: []
 affinity: {}
 
 postgresql:
+  enabled: true
+  loadBalancer:
+    enabled: false
+    internal: true
   auth:
     enablePostgresUser: false
     database: "pgdb"
@@ -80,10 +93,6 @@ postgresql:
   primary:
     persistence:
       size: 1Gi
-    service:
-      type: LoadBalancer
-      annotations:
-        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
         cpu: 150m
@@ -92,7 +101,31 @@ postgresql:
         cpu: 180m
         memory: 90Mi
 
+mysql:
+  enabled: false
+  loadBalancer:
+    enabled: false
+    internal: true
+  auth:
+    database: "mydb"
+    username: "myuser"
+    existingSecret: "mysql-credentials"
+  primary:
+    persistence:
+      size: 1Gi
+    resources:
+      requests:
+        cpu: 150m
+        memory: 192Mi
+      limits:
+        cpu: 180m
+        memory: 256Mi
+
 redis:
+  enabled: true
+  loadBalancer:
+    enabled: false
+    internal: true
   auth:
     existingSecret: "redis-credentials"
     existingSecretPasswordKey: "password"
@@ -100,20 +133,18 @@ redis:
   master:
     persistence:
       size: 1Gi
-    service:
-      type: LoadBalancer
-      annotations:
-        networking.gke.io/load-balancer-type: "Internal"
     resources:
       requests:
-        cpu: 15m
+        cpu: 42m
         memory: 32Mi
       limits:
-        cpu: 18m
+        cpu: 54m
         memory: 64Mi
 
 soketi:
   enabled: false
+  service:
+    port: 6001
   app:
     resources:
       requests:
@@ -138,17 +169,11 @@ soketi:
           fieldRef:
             fieldPath: metadata.namespace
       
-  ingress:
-    enabled: true
-    annotations: 
-      kubernetes.io/ingress.class: nginx
-      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-      nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    hosts: []
-
 cronjobs:
   enabled: false
-  schedulers: []
+  schedulers: 
+    - name: default
+      cmd: "php artisan schedule:run || true"
   schedule: "*/1 * * * *"
   concurrencyPolicy: "Forbid"
   startingDeadlineSeconds: 200
@@ -163,6 +188,7 @@ cronjobs:
       memory: 100Mi
 
 migration:
+  enabled: true
   activeDeadlineSeconds: 180
   cmd: "php artisan migrate --force"
   resources: 
@@ -174,6 +200,7 @@ migration:
       memory: 100Mi
 
 workers: 
+  enabled: true
   resources:
     requests:
       cpu: 35m

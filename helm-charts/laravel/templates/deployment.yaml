@@ -37,21 +37,25 @@ spec:
           - name: http
             containerPort: 80
             protocol: TCP
+        {{- if .Values.livenessProbe.enabled }}
         livenessProbe:
           httpGet:
-            path: /
-            port: http
+            path: {{ .Values.livenessProbe.path }}
+            port: {{ .Values.livenessProbe.port }}
           failureThreshold: 5
           initialDelaySeconds: 5
           periodSeconds: 20
           timeoutSeconds: 10
+        {{- end }}
+        {{- if .Values.readinessProbe.enabled }}
         readinessProbe:
           httpGet:
-            path: /
-            port: http
+            path: {{ .Values.readinessProbe.path }}
+            port: {{ .Values.readinessProbe.port }}
           initialDelaySeconds: 5
           periodSeconds: 20
           timeoutSeconds: 10
+        {{- end }}
         volumeMounts:
           - name: gcs
             mountPath: "/mnt/gcs"

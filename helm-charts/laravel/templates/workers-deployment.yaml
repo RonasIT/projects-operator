@@ -1,3 +1,4 @@
+{{- if .Values.workers.enabled -}}
 {{- $root := . -}}
 {{- range .Values.workers.items }}
 ---
@@ -11,11 +12,11 @@ spec:
   replicas: {{ .replicaCount | default 1 }}
   selector:
     matchLabels:
-      {{- include "laravel.labels" $root | nindent 6 }}
+      {{- include "laravel.selectorLabels" $root | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "laravel.labels" $root | nindent 8 }}
+        {{- include "laravel.selectorLabels" $root | nindent 8 }}
     spec:
       {{- with $root.Values.imagePullSecrets }}
       imagePullSecrets:
@@ -43,4 +44,5 @@ spec:
           secret:
             secretName: gcs-key
             optional: true
+{{- end }}
 {{- end }}

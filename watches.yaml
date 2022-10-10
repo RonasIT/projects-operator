@@ -7,4 +7,12 @@
   version: v1alpha1
   kind: Laravel
   chart: helm-charts/laravel
+- group: projects.ronas.cloud
+  version: v1alpha1
+  kind: React
+  chart: helm-charts/react
+- group: projects.ronas.cloud
+  version: v1alpha1
+  kind: Angular
+  chart: helm-charts/angular
 #+kubebuilder:scaffold:watch

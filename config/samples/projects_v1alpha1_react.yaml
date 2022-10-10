@@ -1,0 +1,11 @@
+apiVersion: projects.ronas.cloud/v1alpha1
+kind: React
+metadata:
+  name: sample-react
+spec:
+  image:
+    repository: nginx
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  ingress:
+    host: react.ronas.cloud

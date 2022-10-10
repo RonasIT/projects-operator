@@ -1,0 +1,24 @@
+# permissions for end users to edit reacts.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: react-editor-role
+rules:
+- apiGroups:
+  - projects.ronas.cloud
+  resources:
+  - reacts
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - projects.ronas.cloud
+  resources:
+  - reacts/status
+  verbs:
+  - get
