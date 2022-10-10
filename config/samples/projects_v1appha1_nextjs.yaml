@@ -1,7 +1,7 @@
 apiVersion: projects.ronas.cloud/v1alpha1
 kind: NextJS
 metadata:
-  name: demo-nextjs
+  name: sample-nextjs
 spec:
   image:
     repository: nginx

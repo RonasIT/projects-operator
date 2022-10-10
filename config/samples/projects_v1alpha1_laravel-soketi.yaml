@@ -1,13 +1,13 @@
 apiVersion: projects.ronas.cloud/v1alpha1
 kind: Laravel
 metadata:
-  name: sample-laravel
+  name: sample-laravel-soketi
 spec:
   soketi:
     enabled: true
     host:  ws.laravel.ronas.cloud
   ingress:
-    enabled: false
+    host: api.laravel.ronas.cloud
   postgresql:
     enabled: false
   mysql:

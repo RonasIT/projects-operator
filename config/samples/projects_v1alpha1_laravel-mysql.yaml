@@ -1,0 +1,43 @@
+apiVersion: projects.ronas.cloud/v1alpha1
+kind: Laravel
+metadata:
+  name: sample-laravel-soketi
+spec:
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 750m
+      memory: 768Mi
+  livenessProbe:
+    path: /status
+  readinessProbe:
+    path: /status
+  soketi:
+    enabled: true
+    host:  ws.laravel.ronas.cloud
+  ingress:
+    host: api.laravel.ronas.cloud
+  mysql:
+    enabled: true
+    image:
+      tag: '5.7.39-debian-11-r2'
+    primary:
+      resources:
+        requests:
+          memory: 256Mi
+        limits:
+          memory: 512Mi
+  cronjobs:
+    enabled: true
+    schedulers:
+      - name: default
+        cmd: "php artisan schedule:run || true"
+  workers:
+    items:
+      - name: default
+        replicaCount: 5
+        cmd: "php /app/artisan queue:work --sleep=3 --tries=3 --queue=mails,default"
+
