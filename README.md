@@ -1,4 +1,6 @@
-# 🐙 Projects Operator
+<img src="hero.svg" >
+
+# Projects Operator
 
 Projects operator helps development companies which are working on more than one project at the same time. It allows to save time on deploy and replace DevOps routine tasks with the smart solution. At this stage the next frameworks are supported:
 
