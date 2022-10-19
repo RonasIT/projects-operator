@@ -11,7 +11,7 @@ Projects operator helps development companies which are working on more than one
 
 We are more than happy to add more to cover as many cases as possible. Please feel free to open PR/issue with the technology you wish to see here.
 
-## Description
+## 📄 Description
 
 Projects operator is k8s application which manages projects developed using various frameworks and thechnologies. For each framework there is a helm chart developed in line with its specifics and possible dependencies.
 
@@ -21,17 +21,17 @@ Based on the created resource projects operator manages helm releases for each p
 
 Projects operator simultaneously tracks changes in project's resources and helm charts as well. In case of changes, it updates the projects affected by these changes.  
 
-## Benefits
+## 🧞‍♂️ Benefits
 
 🚀 Fast start  
-🔧 Allows developers to be sure all apps are updated  
+🔧Allows developers to be sure all apps are updated  
 👁 Manage everything from single place  
-🍕 Fully automated  
+🦾 Fully automated  
 ☁️ Cloud agnostic  
-💪 Flexible and customizable  
-🪵 Smart resource usage  
+🕺🏻 Flexible and customizable  
+♻️ Smart resource usage  
 
-## Current status
+## 🧘🏻 Current status
 
 At the moment projects operator is under extensive development. The number of the projects running via operator are growing, so we do fixes and add new supported technologies on a fly. 
 
