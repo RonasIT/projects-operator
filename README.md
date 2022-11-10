@@ -31,7 +31,7 @@ Projects operator simultaneously tracks changes in project's resources and helm 
 🕺🏻 Flexible and customizable  
 ♻️ Smart resource usage  
 
-## 🧘🏻 Current status
+## 🧘🏻  Current status
 
 At the moment projects operator is under extensive development. The number of the projects running via operator are growing, so we do fixes and add new supported technologies on a fly. 
 
