@@ -27,6 +27,9 @@ spec:
           - name: gcs
             mountPath: "/mnt/gcs"
             readOnly: true
+          - name: scripts
+            mountPath: "/mnt/scripts"
+            readOnly: true
         resources:
 {{- toYaml .Values.migration.resources | nindent 12 }}
         command:
@@ -39,4 +42,7 @@ spec:
           secret:
             secretName: gcs-key
             optional: true
+        - name: scripts
+          configMap:
+            name: migration-script-configmap
 {{- end }}
