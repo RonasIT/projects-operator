@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: migration-script-configmap
+  name: {{ include "laravel.fullname" . }}-scripts
   labels:
     {{- include "laravel.labels" . | nindent 4 }}
 data:

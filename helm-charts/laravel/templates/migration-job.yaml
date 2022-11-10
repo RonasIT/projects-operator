@@ -43,6 +43,6 @@ spec:
             optional: true
         - name: scripts
           configMap:
-            name: migration-script-configmap
+            name: {{ include "laravel.fullname" . }}-scripts
             defaultMode: 0777
 {{- end }}
