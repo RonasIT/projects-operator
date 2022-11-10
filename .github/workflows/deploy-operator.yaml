@@ -24,7 +24,7 @@ jobs:
           credentials_json: '${{ secrets.GKE_SA_KEY }}'
       
       - name: Setup Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v3
 
       - name: Helm repos add
         run: |
