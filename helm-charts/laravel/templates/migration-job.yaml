@@ -29,7 +29,6 @@ spec:
             readOnly: true
           - name: scripts
             mountPath: "/mnt/scripts"
-            readOnly: true
         resources:
 {{- toYaml .Values.migration.resources | nindent 12 }}
         command:
@@ -45,4 +44,5 @@ spec:
         - name: scripts
           configMap:
             name: migration-script-configmap
+            defaultMode: 0777
 {{- end }}
