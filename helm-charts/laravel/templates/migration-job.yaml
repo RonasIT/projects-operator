@@ -27,6 +27,8 @@ spec:
           - name: gcs
             mountPath: "/mnt/gcs"
             readOnly: true
+          - name: scripts
+            mountPath: "/mnt/scripts"
         resources:
 {{- toYaml .Values.migration.resources | nindent 12 }}
         command:
@@ -39,4 +41,8 @@ spec:
           secret:
             secretName: gcs-key
             optional: true
+        - name: scripts
+          configMap:
+            name: {{ include "laravel.fullname" . }}-scripts
+            defaultMode: 0777
 {{- end }}
