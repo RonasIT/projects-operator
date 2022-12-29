@@ -7,9 +7,9 @@ dependencies:
   version: 9.2.1
 - name: redis
   repository: https://charts.bitnami.com/bitnami
-  version: 16.9.5
+  version: 16.13.2
 - name: soketi
   repository: https://helm.soketi.app
   version: 0.16.2
-digest: sha256:84e98c7729cc0647512c6a169e1b7cbd4a4afe24368e3b9f81df196a803526b1
-generated: "2022-08-18T14:40:15.699315+06:00"
+digest: sha256:eff80a88f0c60787ab3d2e53f2c7b7b9f88c7faff775876a46c3fe6ebb4547f3
+generated: "2022-12-29T13:40:43.684566+01:00"

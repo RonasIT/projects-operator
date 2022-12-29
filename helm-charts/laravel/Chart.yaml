@@ -16,7 +16,7 @@ dependencies:
   - name: redis
     condition: redis.enabled
     repository: https://charts.bitnami.com/bitnami
-    version: "16.9.5"
+    version: "16.13.2"
   - name: soketi
     condition: soketi.enabled
     repository: https://helm.soketi.app
