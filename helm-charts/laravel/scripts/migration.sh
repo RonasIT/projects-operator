@@ -5,7 +5,7 @@ function migrate_status() {
 }
 
 function migrate() {
-  php artisan migrate
+  php artisan migrate --force
 }
 
 function rollback() {
