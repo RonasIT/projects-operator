@@ -24,9 +24,7 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         volumeMounts:
-          - name: gcs
-            mountPath: "/mnt/gcs"
-            readOnly: true
+          {{- toYaml .Values.volumeMounts | nindent 10 }}
           - name: scripts
             mountPath: "/mnt/scripts"
         resources:
@@ -37,10 +35,7 @@ spec:
           - {{ .Values.migration.cmd }}
       restartPolicy: Never
       volumes:
-        - name: gcs
-          secret:
-            secretName: gcs-key
-            optional: true
+        {{- toYaml .Values.volumes | nindent 8 }}
         - name: scripts
           configMap:
             name: {{ include "laravel.fullname" . }}-scripts

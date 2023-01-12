@@ -33,9 +33,7 @@ spec:
             image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
             imagePullPolicy: {{ $root.Values.image.pullPolicy }}
             volumeMounts:
-              - name: gcs
-                mountPath: "/mnt/gcs"
-                readOnly: true
+              {{- toYaml $root.Values.volumeMounts | nindent 14 }}
             resources:
 {{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
             command:
@@ -43,10 +41,7 @@ spec:
               - -c
               - {{ .cmd }}
           volumes:
-            - name: gcs
-              secret:
-                secretName: gcs-key
-                optional: true
+            {{- toYaml $root.Values.volumes | nindent 12 }}
           restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.restartPolicy }}"
 {{- end }}
 {{- end }}

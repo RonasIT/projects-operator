@@ -32,10 +32,22 @@ livenessProbe:
   enabled: true
   path: /status
   port: http
+
 readinessProbe:
   enabled: true
   path: /status
   port: http
+
+volumes: 
+  - name: gcs
+    secret:
+      secretName: gcs-key
+      optional: true
+
+volumeMounts:
+  - name: gcs
+    mountPath: "/mnt/gcs"
+    readOnly: true
 
 securityContext: {}
   # capabilities:
