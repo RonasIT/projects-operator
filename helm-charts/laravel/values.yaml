@@ -184,7 +184,7 @@ soketi:
             fieldPath: metadata.namespace
       
 cronjobs:
-  enabled: true
+  enabled: false
   schedulers: 
     - name: default
       cmd: "php artisan schedule:run || true"
