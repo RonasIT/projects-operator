@@ -8,6 +8,7 @@
   kind: Laravel
   chart: helm-charts/laravel
   overrideValues:
+    # https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues/#credential-errors-while-upgrading-chart-releases
     postgresql.global.postgresql.auth.password: secret
 - group: projects.ronas.cloud
   version: v1alpha1
