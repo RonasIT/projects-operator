@@ -26,15 +26,25 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
+
+livenessProbe:
+  enabled: true
+  path: /
+  port: http
+
+readinessProbe:
+  enabled: true
+  path: /
+  port: http
 
 service:
   type: ClusterIP
@@ -43,14 +53,14 @@ service:
 ingress:
   enabled: true
   className: ""
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: cert-manager
     certmanager.k8s.io/cluster-issuer: cert-manager
   host: nextjs.ronas.cloud
 
-resources: 
+resources:
   requests:
     cpu: 50m
     memory: 64Mi
