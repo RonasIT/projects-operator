@@ -70,8 +70,12 @@ ingress:
     cert-manager.io/cluster-issuer: cert-manager
     certmanager.k8s.io/cluster-issuer: cert-manager
   host: laravel.ronas.cloud
-  path: /
   pathType: ImplementationSpecific
+  path: /
+  hosts: {}
+# - host: laravel.ronas.cloud
+#   pathType: ImplementationSpecific
+#   path: /
 
 resources:
   requests:
