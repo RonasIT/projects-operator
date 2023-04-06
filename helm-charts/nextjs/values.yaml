@@ -58,6 +58,12 @@ ingress:
     ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: cert-manager
     certmanager.k8s.io/cluster-issuer: cert-manager
+    nginx.ingress.kubernetes.io/configuration-snippet: >
+      if ($request_uri ~* \.(js|jpg|jpeg|gif|png|css|tgz|gz|rar|bz2|doc|pdf|ppt|tar|wav|bmp|rtf|swf|ico|flv|txt|woff|woff2|svg|mov)(&.+)?$) {
+
+        expires 1M;
+        add_header Cache-Control "public";
+      }
   host: nextjs.ronas.cloud
 
 resources:
