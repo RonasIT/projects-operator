@@ -680,6 +680,16 @@ entries:
   nextjs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-04-06T22:11:59.180309443Z"
+    description: A Helm chart for Kubernetes
+    digest: 2fa5a1f2f26a0027dd7857bf60894a826e65a764807eb4ea6fc63e94d5252b60
+    name: nextjs
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/nextjs-1.0.3/nextjs-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-04-03T12:52:56.530807331Z"
     description: A Helm chart for Kubernetes
     digest: ec8a2e7f9a65698e94d399d9a793d2519b6e1c95a339c52187b20e2b9cfc1078
@@ -729,4 +739,4 @@ entries:
     urls:
     - https://github.com/RonasIT/projects-operator/releases/download/react-0.1.0/react-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-03T13:27:26.546554205Z"
+generated: "2023-04-06T22:11:59.180480648Z"
