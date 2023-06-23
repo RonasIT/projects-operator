@@ -1,6 +1,6 @@
 # laravel
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square)
+![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -15,10 +15,10 @@ $ helm install my-release ronas/laravel
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mysql | 9.2.1 |
-| https://charts.bitnami.com/bitnami | postgresql | 11.6.18 |
-| https://charts.bitnami.com/bitnami | redis | 16.9.5 |
-| https://helm.soketi.app | soketi | 0.16.2 |
+| https://charts.bitnami.com/bitnami | mysql | 9.5.2 |
+| https://charts.bitnami.com/bitnami | postgresql | 12.2.2 |
+| https://charts.bitnami.com/bitnami | redis | 17.8.3 |
+| https://helm.soketi.app | soketi | 1.0.2 |
 
 ## Values
 
@@ -42,6 +42,7 @@ $ helm install my-release ronas/laravel
 | cronjobs.schedulers[0].name | string | `"default"` |  |
 | cronjobs.startingDeadlineSeconds | int | `200` |  |
 | cronjobs.successfulJobsHistoryLimit | int | `1` |  |
+| extraEnvVars | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"nginx"` |  |
@@ -54,11 +55,14 @@ $ helm install my-release ronas/laravel
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.host | string | `"laravel.ronas.cloud"` |  |
+| ingress.hosts | object | `{}` |  |
+| ingress.path | string | `"/"` |  |
+| ingress.pathType | string | `"ImplementationSpecific"` |  |
 | livenessProbe.enabled | bool | `true` |  |
 | livenessProbe.path | string | `"/status"` |  |
 | livenessProbe.port | string | `"http"` |  |
 | migration.activeDeadlineSeconds | int | `180` |  |
-| migration.cmd | string | `"php artisan migrate --force"` |  |
+| migration.cmd | string | `"/mnt/scripts/migration.sh"` |  |
 | migration.enabled | bool | `true` |  |
 | migration.resources.limits.cpu | string | `"45m"` |  |
 | migration.resources.limits.memory | string | `"100Mi"` |  |
@@ -84,6 +88,7 @@ $ helm install my-release ronas/laravel
 | postgresql.auth.existingSecret | string | `"postgresql-credentials"` |  |
 | postgresql.auth.username | string | `"pguser"` |  |
 | postgresql.enabled | bool | `true` |  |
+| postgresql.image.tag | string | `"14.7.0-debian-11-r10"` |  |
 | postgresql.loadBalancer.enabled | bool | `false` |  |
 | postgresql.loadBalancer.internal | bool | `true` |  |
 | postgresql.primary.persistence.size | string | `"1Gi"` |  |
@@ -131,6 +136,12 @@ $ helm install my-release ronas/laravel
 | soketi.enabled | bool | `false` |  |
 | soketi.service.port | int | `6001` |  |
 | tolerations | list | `[]` |  |
+| volumeMounts[0].mountPath | string | `"/mnt/gcs"` |  |
+| volumeMounts[0].name | string | `"gcs"` |  |
+| volumeMounts[0].readOnly | bool | `true` |  |
+| volumes[0].name | string | `"gcs"` |  |
+| volumes[0].secret.optional | bool | `true` |  |
+| volumes[0].secret.secretName | string | `"gcs-key"` |  |
 | workers.enabled | bool | `true` |  |
 | workers.items | list | `[]` |  |
 | workers.resources.limits.cpu | string | `"45m"` |  |
