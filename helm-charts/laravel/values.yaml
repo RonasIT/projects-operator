@@ -11,8 +11,14 @@ image:
   tag: ""
 
 imagePullSecrets: []
+
 nameOverride: ""
 fullnameOverride: ""
+
+extraEnvVars: []
+# extraEnvVars:
+#   - name: TZ
+#     value: "Europe/Paris"
 
 serviceAccount:
   # Specifies whether a service account should be created

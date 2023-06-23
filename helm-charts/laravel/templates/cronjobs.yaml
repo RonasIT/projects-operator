@@ -30,6 +30,10 @@ spec:
             {{- toYaml $root.Values.podSecurityContext | nindent 12 }}
           containers:
           - name: {{ regexReplaceAll "_" .name "-" }}-cronjob
+            securityContext:
+              {{- toYaml $root.Values.securityContext | nindent 14 }}
+            env:
+              {{- toYaml $root.Values.extraEnvVars | nindent 14 }}
             image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
             imagePullPolicy: {{ $root.Values.image.pullPolicy }}
             volumeMounts:
