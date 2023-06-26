@@ -14,6 +14,11 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+extraEnvVars: []
+# extraEnvVars:
+#   - name: TZ
+#     value: "Europe/Paris"
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -26,15 +31,15 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -43,14 +48,14 @@ service:
 ingress:
   enabled: true
   className: ""
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: cert-manager
     certmanager.k8s.io/cluster-issuer: cert-manager
   host: react.ronas.cloud
 
-resources: 
+resources:
   requests:
     cpu: 50m
     memory: 64Mi
