@@ -33,7 +33,7 @@ spec:
           {{- toYaml $root.Values.extraEnvVars | nindent 10 }}
         image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
         imagePullPolicy: IfNotPresent
-        {{- if .Values.volumeMounts -}
+        {{- if .Values.volumeMounts -}}
         volumeMounts:
           {{- toYaml $root.Values.volumeMounts | nindent 10 }}
         {{- end }}
@@ -43,7 +43,7 @@ spec:
           - sh
           - -c
           - {{ .cmd }}
-      {{- if .Values.volumes -}
+      {{- if .Values.volumes -}}
       volumes:
         {{- toYaml $root.Values.volumes | nindent 8 }}
       {{- end }}
