@@ -36,16 +36,20 @@ spec:
               {{- toYaml $root.Values.extraEnvVars | nindent 14 }}
             image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
             imagePullPolicy: {{ $root.Values.image.pullPolicy }}
+            {{- if .Values.volumeMounts -}}
             volumeMounts:
               {{- toYaml $root.Values.volumeMounts | nindent 14 }}
+            {{- end }}
             resources:
 {{ toYaml ( .resources | default $root.Values.cronjobs.resources ) | indent 16 }}
             command:
               - sh
               - -c
               - {{ .cmd }}
+          {{- if .Values.volumes -}}
           volumes:
             {{- toYaml $root.Values.volumes | nindent 12 }}
+          {{- end }}
           restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.restartPolicy }}"
 {{- end }}
 {{- end }}
