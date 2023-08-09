@@ -34,8 +34,10 @@ spec:
           - -c
           - {{ .Values.migration.cmd }}
       restartPolicy: Never
+      {{- if and .Values.volumes }}
       volumes:
         {{- toYaml .Values.volumes | nindent 8 }}
+      {{- end }}
         - name: scripts
           configMap:
             name: {{ include "laravel.fullname" . }}-scripts
