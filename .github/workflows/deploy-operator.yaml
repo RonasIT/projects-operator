@@ -1,4 +1,4 @@
-name: Build, Push and Deploy 
+name: Build, Push and Deploy
 
 on:
   push:
@@ -17,12 +17,12 @@ jobs:
         uses: FranzDiebold/github-env-vars-action@v2.3.1
 
       - id: auth
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v0.7.0'
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v0.7.0"
         with:
-          token_format: 'access_token'
-          credentials_json: '${{ secrets.GKE_SA_KEY }}'
-      
+          token_format: "access_token"
+          credentials_json: "${{ secrets.GKE_SA_KEY }}"
+
       - name: Setup Helm
         uses: azure/setup-helm@v3
 
@@ -34,10 +34,10 @@ jobs:
 
       - name: Get ronas helm charts
         run: |
-          helm pull ronas-helm/angular ronas-helm/laravel \ 
-          ronas-helm/nextjs ronas-helm/react \
-          --untar --untardir ./helm-charts
-      
+          helm pull ronas-helm/angular ronas-helm/laravel ronas-helm/nextjs ronas-helm/react \
+            --untar \
+            --untardir ./helm-charts
+
       - name: Install Helm dependencies
         run: |
           helm dependency build helm-charts/laravel
@@ -45,12 +45,12 @@ jobs:
       - name: Build & Publish docker image
         uses: aevea/action-kaniko@master
         with:
-          image: '${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}'
-          tag: '${{ github.run_number }}'
+          image: "${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}"
+          tag: "${{ github.run_number }}"
           tag_with_latest: true
-          username: 'oauth2accesstoken'
-          password: '${{ steps.auth.outputs.access_token }}'
-          registry: 'gcr.io'
+          username: "oauth2accesstoken"
+          password: "${{ steps.auth.outputs.access_token }}"
+          registry: "gcr.io"
 
   deploy:
     needs: build-and-publish
@@ -64,16 +64,16 @@ jobs:
         uses: FranzDiebold/github-env-vars-action@v2.3.1
 
       - id: auth
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v0.7.0'
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v0.7.0"
         with:
-          credentials_json: '${{ secrets.GKE_SA_KEY }}'
+          credentials_json: "${{ secrets.GKE_SA_KEY }}"
 
       - name: Get GKE credentials
-        uses: 'google-github-actions/get-gke-credentials@v0'
+        uses: "google-github-actions/get-gke-credentials@v0"
         with:
-          cluster_name: '${{ secrets.GKE_CLUSTER_NAME }}'
-          location: '${{ secrets.GKE_CLUSTER_REGION }}'
+          cluster_name: "${{ secrets.GKE_CLUSTER_NAME }}"
+          location: "${{ secrets.GKE_CLUSTER_REGION }}"
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -86,14 +86,13 @@ jobs:
         run: |
           cd config/manager && kustomize edit set image controller="${{ env.IMAGE }}"
         env:
-          IMAGE: 'gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}:${{ github.run_number }}'
-      
+          IMAGE: "gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.CI_REPOSITORY_NAME_SLUG }}:${{ github.run_number }}"
+
       - name: Apply changes
         run: |
           kustomize build config/default | kubectl apply -f -
-      
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          file_pattern: 'config/**/*.yaml'
-          commit_message: 'chore: bump projects-operator image version to ${{ github.run_number }}'
-      
+          file_pattern: "config/**/*.yaml"
+          commit_message: "chore: bump projects-operator image version to ${{ github.run_number }}"
