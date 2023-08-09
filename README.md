@@ -51,14 +51,25 @@ You’ll need a Kubernetes cluster to run against. You can use [KIND](https://si
 **Note:** Your controller will automatically use the current context in your kubeconfig file (i.e. whatever cluster `kubectl cluster-info` shows).
 
 ### Running on the cluster
+1. At first you need to download helm charts from ronas repository:
+	
+```sh
+helm repo add ronas-helm https://ronasit.github.io/helm
+```
 
-1. Build and push your image to the location specified by `IMG`:
+```sh
+helm pull ronas-helm/angular ronas-helm/laravel \ 
+ronas-helm/nextjs ronas-helm/react \
+--untar --untardir ./helm-charts
+```
+
+2. Build and push your image to the location specified by `IMG`:
 	
 ```sh
 make docker-build docker-push IMG=gcr.io/ronas-cloud/projects-operator:latest
 ```
 	
-2. Deploy the controller to the cluster with the image specified by `IMG`:
+3. Deploy the controller to the cluster with the image specified by `IMG`:
 
 ```sh
 make deploy IMG=gcr.io/ronas-cloud/projects-operator:latest
