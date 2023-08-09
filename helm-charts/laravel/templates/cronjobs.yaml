@@ -44,10 +44,8 @@ spec:
               - sh
               - -c
               - {{ .cmd }}
-          {{- if .Values.volumes }}
           volumes:
             {{- toYaml $root.Values.volumes | nindent 12 }}
-          {{- end }}
           restartPolicy: "{{ .restartPolicy | default $root.Values.cronjobs.restartPolicy }}"
 {{- end }}
 {{- end }}
