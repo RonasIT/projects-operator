@@ -58,9 +58,7 @@ helm repo add ronas-helm https://ronasit.github.io/helm
 ```
 
 ```sh
-helm pull ronas-helm/angular ronas-helm/laravel \ 
-ronas-helm/nextjs ronas-helm/react \
---untar --untardir ./helm-charts
+helm pull ronas-helm/angular ronas-helm/laravel ronas-helm/nextjs ronas-helm/react --untar --untardir ./helm-charts
 ```
 
 2. Build and push your image to the location specified by `IMG`:
