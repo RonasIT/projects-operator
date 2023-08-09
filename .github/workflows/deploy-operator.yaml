@@ -30,7 +30,14 @@ jobs:
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo add soketi https://helm.soketi.app
+          helm repo add ronas-helm https://ronasit.github.io/helm
 
+      - name: Get ronas helm charts
+        run: |
+          helm pull ronas-helm/angular ronas-helm/laravel \ 
+          ronas-helm/nextjs ronas-helm/react \
+          --untar --untardir ./helm-charts
+      
       - name: Install Helm dependencies
         run: |
           helm dependency build helm-charts/laravel
