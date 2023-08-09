@@ -34,10 +34,9 @@ jobs:
 
       - name: Get ronas helm charts
         run: |
-          helm pull ronas-helm/angular --untardir ./helm-charts
-          helm pull ronas-helm/laravel --untardir ./helm-charts
-          helm pull ronas-helm/nextjs --untardir ./helm-charts
-          helm pull ronas-helm/react --untardir ./helm-charts
+          helm pull ronas-helm/angular ronas-helm/laravel \ 
+          ronas-helm/nextjs ronas-helm/react \
+          --untar --untardir ./helm-charts
       
       - name: Install Helm dependencies
         run: |
