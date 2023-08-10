@@ -9,16 +9,16 @@ dependencies:
   - name: postgresql
     condition: postgresql.enabled
     repository: https://charts.bitnami.com/bitnami
-    version: "11.6.18"
+    version: 12.2.2
   - name: mysql
     condition: mysql.enabled
     repository: https://charts.bitnami.com/bitnami
-    version: "9.2.1"
+    version: 9.5.2
   - name: redis
     condition: redis.enabled
     repository: https://charts.bitnami.com/bitnami
-    version: "16.9.5"
+    version: 17.8.3
   - name: soketi
     condition: soketi.enabled
     repository: https://helm.soketi.app
-    version: "0.16.2"
+    version: 1.0.2
