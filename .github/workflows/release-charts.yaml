@@ -3,7 +3,7 @@ name: Release Charts
 on:
   push:
     branches:
-      - main
+      - gh-pages
     paths:
       - helm-charts/**
 
