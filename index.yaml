@@ -3,6 +3,17 @@ entries:
   angular:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-08-10T12:50:36.637973347Z"
+    deprecated: true
+    description: DEPRECATED Helm charts moved to https://ronasit.github.io/helm/
+    digest: 6928b87f5b4dbcd86f97d0f950d62061dd31693d22fba7867beca673d0983d78
+    name: angular
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/angular-1.0.6/angular-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-06-26T09:04:13.286132627Z"
     description: A Helm chart for Kubernetes
     digest: 0fd4de634ecca063a4147d4404075a2a79bcd0a0494c44646897db3d137715d5
@@ -62,6 +73,34 @@ entries:
     - https://github.com/RonasIT/projects-operator/releases/download/angular-0.1.0/angular-0.1.0.tgz
     version: 0.1.0
   laravel:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-08-10T12:50:36.838683416Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.2
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.5.2
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.8.3
+    - condition: soketi.enabled
+      name: soketi
+      repository: https://helm.soketi.app
+      version: 1.0.2
+    deprecated: true
+    description: DEPRECATED Helm charts moved to https://ronasit.github.io/helm/
+    digest: 1005b933ec2d3d1644da4d7921985789853d6b7ac5f307f93a7c630a9771b0ac
+    name: laravel
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/laravel-1.3.6/laravel-1.3.6.tgz
+    version: 1.3.6
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-06-26T09:00:06.394275572Z"
@@ -744,6 +783,17 @@ entries:
   nextjs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-08-10T12:50:36.975630605Z"
+    deprecated: true
+    description: DEPRECATED Helm charts moved to https://ronasit.github.io/helm/
+    digest: 91e25b74df80c4d7f81e765ce3f3af568aec9d1dd61420a101654f73729233b1
+    name: nextjs
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/nextjs-1.0.4/nextjs-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-04-06T22:11:59.180309443Z"
     description: A Helm chart for Kubernetes
     digest: 2fa5a1f2f26a0027dd7857bf60894a826e65a764807eb4ea6fc63e94d5252b60
@@ -785,6 +835,17 @@ entries:
   react:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-08-10T12:50:37.116589049Z"
+    deprecated: true
+    description: DEPRECATED Helm charts moved to https://ronasit.github.io/helm/
+    digest: 840ee3a62229b8a783b12da2aa47adec51ffce8c270bec8fba3ad2567e2a6caa
+    name: react
+    type: application
+    urls:
+    - https://github.com/RonasIT/projects-operator/releases/download/react-0.1.2/react-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-10-10T07:19:31.228014874Z"
     description: A Helm chart for Kubernetes
     digest: d9689823cdc397ce6acf64d08ecbc858bcd27f7443e9db5390cc094df7f5ede9
@@ -803,4 +864,4 @@ entries:
     urls:
     - https://github.com/RonasIT/projects-operator/releases/download/react-0.1.0/react-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-26T09:04:13.286284729Z"
+generated: "2023-08-10T12:50:37.116818652Z"
