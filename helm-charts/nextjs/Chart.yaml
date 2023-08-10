@@ -4,4 +4,4 @@ description: DEPRECATED Helm charts moved to https://ronasit.github.io/helm/
 deprecated: true
 name: nextjs
 type: application
-version: 1.0.2
+version: 1.0.4

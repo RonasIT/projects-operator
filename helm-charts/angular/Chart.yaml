@@ -3,5 +3,5 @@ appVersion: 1.16.0
 description: DEPRECATED Helm charts moved to https://ronasit.github.io/helm/
 name: angular
 type: application
-version: 1.0.4
+version: 1.0.6
 deprecated: true
